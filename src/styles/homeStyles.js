@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 
 export const Banner = styled.div`
-  background: ${props => props.theme.background};
+  background: ${(props) => props.theme.background};
   height: 100vh;
   width: 100%;
   position: relative;
@@ -28,7 +28,7 @@ export const BannerTitle = styled(motion.h1)`
   position: absolute;
   bottom: -100px;
   left: -18px;
-  color: ${props => props.theme.text};
+  color: ${(props) => props.theme.text};
   pointer-events: none;
 `
 
@@ -49,7 +49,7 @@ export const Content = styled.h2`
   font-size: 2.3rem;
   font-weight: 400;
   margin-left: 124px;
-  color: ${props => props.theme.text};
+  color: ${(props) => props.theme.text};
 `
 
 // home featured section
@@ -67,7 +67,7 @@ export const FeaturedContent = styled(motion.div)`
   width: 100%;
   padding: 56px 124px;
   box-sizing: border-box;
-  color: ${props => props.theme.text};
+  color: ${(props) => props.theme.text};
   h3 {
     font-size: 1.4rem;
   }
@@ -98,7 +98,7 @@ export const FeaturedContent = styled(motion.div)`
         left: -48px;
         width: 108px;
         path {
-          fill: ${props => props.theme.text};
+          fill: ${(props) => props.theme.text};
         }
       }
     }
@@ -116,7 +116,7 @@ export const FeaturedVideo = styled.div`
 export const FeaturedProjects = styled.div`
   margin-top: 200px;
   button {
-    background: ${props => props.theme.red};
+    background: ${(props) => props.theme.red};
     color: #fff;
     position: relative;
     padding: 20px;
@@ -152,9 +152,7 @@ export const FeaturedProjects = styled.div`
 `
 
 // home about section
-export const HomeAboutSection = styled(motion.div)`
-  margin-bottom: 200px;
-`
+export const HomeAboutSection = styled(motion.div)``
 
 export const About = styled.div`
   width: 100%;
@@ -163,14 +161,14 @@ export const About = styled.div`
     font-size: 2.3rem;
     font-weight: 400;
     margin-left: 124px;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
   }
   p {
     max-width: 440px;
     font-size: 1rem;
     line-height: 1.6rem;
     margin-left: 124px;
-    color: ${props => props.theme.text};
+    color: ${(props) => props.theme.text};
   }
 `
 
@@ -180,7 +178,7 @@ export const Services = styled.div``
 
 export const AccordionHeader = styled(motion.div)`
   width: 100%;
-  color: ${props => props.theme.red};
+  color: ${(props) => props.theme.red};
   height: 32px;
   display: flex;
   align-items: center;
@@ -197,7 +195,7 @@ export const AccordionIcon = styled.div`
   span {
     width: 16px;
     height: 4px;
-    background: ${props => props.theme.red};
+    background: ${(props) => props.theme.red};
     transition: 0.1 ease-in-out;
   }
 `
@@ -209,7 +207,7 @@ export const AccordionContent = styled(motion.div)`
     width: 100%;
     margin: 8px 0;
     font-size: 0.875rem;
-    color: ${props => props.theme.red};
+    color: ${(props) => props.theme.red};
     display: block;
     font-weight: 300;
   }

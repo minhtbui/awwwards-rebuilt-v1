@@ -17,7 +17,7 @@ export const Container = styled.div`
     max-width: 1244px;
   }
 
-  ${props =>
+  ${(props) =>
     props.fluid &&
     css`
       padding: 0;
@@ -31,38 +31,38 @@ export const Flex = styled.div`
   display: flex;
   align-items: center;
 
-  ${props =>
+  ${(props) =>
     props.spaceBetween &&
     css`
       justify-content: space-between;
     `}
 
-    ${props =>
-      props.flexEnd &&
-      css`
-        justify-content: flex-end;
-      `}
+  ${(props) =>
+    props.flexEnd &&
+    css`
+      justify-content: flex-end;
+    `}
 
-    ${props =>
-      props.alignTop &&
-      css`
-        align-items: flex-start;
-      `}
+    ${(props) =>
+    props.alignTop &&
+    css`
+      align-items: flex-start;
+    `}
 
-    ${props =>
-      props.noHeight &&
-      css`
-        height: 0;
-      `}
+    ${(props) =>
+    props.noHeight &&
+    css`
+      height: 0;
+    `}
 `
 
 export const Cursor = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 16px;
-  height: 16px;
-  background: ${props => props.theme.red};
+  width: 32px;
+  height: 32px;
+  background: ${(props) => props.theme.red};
   border-radius: 100%;
   transform: translate(-50%, -50%);
   transition: all 0.1s ease-in-out;
@@ -73,15 +73,24 @@ export const Cursor = styled.div`
 
   &.hovered {
     background: transparent !important;
-    width: 32px;
-    height: 32px;
-    border: 4px solid ${props => props.theme.red};
+    width: 56px;
+    height: 56px;
+    border: 4px solid ${(props) => props.theme.red};
   }
   &.pointer {
-    border: 4px solid ${props => props.theme.text};
+    border: 4px solid ${(props) => props.theme.text};
   }
 
   &.nav-open {
-    background: ${props => props.theme.text};
+    background: ${(props) => props.theme.text};
+  }
+
+  &.locked {
+    background: transparent !important;
+    width: 56px;
+    height: 56px;
+    border: 4px solid ${(props) => props.theme.text} !important;
+    top: ${(props) => props.theme.top} !important;
+    left: ${(props) => props.theme.left} !important;
   }
 `

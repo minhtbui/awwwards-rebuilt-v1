@@ -12,6 +12,10 @@ import {
   NavFooter,
   NavVideos,
 } from "../styles/navStyles"
+import { FooterContent, FooterSocial } from "../styles/footerStyles"
+
+// icons
+import { Instagram, Facebook, Vimeo } from "../assets/svg/social-icons"
 
 const navRoutes = [
   {
@@ -68,15 +72,31 @@ const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
                     onMouseLeave={onCursor}
                   >
                     <button>
-                      <span></span>
-                      <span></span>
+                      <motion.span
+                        initial={{ rotate: 0, y: 0, opacity: 0 }}
+                        animate={{ rotate: 45, y: 8, opacity: 1 }}
+                        transition={{
+                          delay: 0.4,
+                          duration: 0.8,
+                          ease: [0.6, 0.05, -0.01, 0.9],
+                        }}
+                      ></motion.span>
+                      <motion.span
+                        initial={{ rotate: 0, y: 0, opacity: 0 }}
+                        animate={{ rotate: -45, y: -8, opacity: 1 }}
+                        transition={{
+                          delay: 0.4,
+                          duration: 0.8,
+                          ease: [0.6, 0.05, -0.01, 0.9],
+                        }}
+                      ></motion.span>
                     </button>
                   </CloseNav>
                 </Flex>
               </NavHeader>
               <NavList>
                 <ul>
-                  {navRoutes.map(route => (
+                  {navRoutes.map((route) => (
                     <motion.li
                       key={route.id}
                       onMouseEnter={() => {
@@ -127,7 +147,41 @@ const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
                   ))}
                 </ul>
               </NavList>
-              <NavFooter></NavFooter>
+              <NavFooter>
+                <Flex spaceBetween>
+                  <FooterContent>
+                    <p>000.000.0000</p>
+                  </FooterContent>
+
+                  <FooterContent wider>
+                    <p>google@gmail.com</p>
+                  </FooterContent>
+
+                  <FooterSocial>
+                    <a
+                      href="/"
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={onCursor}
+                    >
+                      <Instagram />
+                    </a>
+                    <a
+                      href="/"
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={onCursor}
+                    >
+                      <Facebook />
+                    </a>
+                    <a
+                      href="/"
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={onCursor}
+                    >
+                      <Vimeo />
+                    </a>
+                  </FooterSocial>
+                </Flex>
+              </NavFooter>
               <NavVideos>
                 <motion.div
                   animate={{ width: showVideo.show ? 0 : "100%" }}

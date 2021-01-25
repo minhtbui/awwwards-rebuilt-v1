@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { Link } from "gatsby"
 
 //styled component
@@ -11,14 +11,30 @@ import {
   useGlobalDispatchContext,
 } from "../context/globalContext"
 
-const Header = ({ onCursor, toggleMenu, setToggleMenu }) => {
+// custom hook
+import useElementPosition from "../hooks/useElementPosition"
+
+const Header = ({
+  onCursor,
+  toggleMenu,
+  setToggleMenu,
+  hamburgerPos,
+  setHamburgerPos,
+}) => {
   const dispatch = useGlobalDispatchContext()
   const { currentTheme } = useGlobalStateContext()
+  const hamburger = useRef(null)
+  const position = useElementPosition(hamburger)
 
   const toggleTheme = () => {
     currentTheme === "dark"
       ? dispatch({ type: "TOGGLE_THEME", theme: "light" })
       : dispatch({ type: "TOGGLE_THEME", theme: "dark" })
+  }
+
+  const menuHover = () => {
+    onCursor("locked")
+    setHamburgerPos({ x: position.x, y: position.y + 72 })
   }
 
   useEffect(() => {
@@ -46,9 +62,12 @@ const Header = ({ onCursor, toggleMenu, setToggleMenu }) => {
             <Link to="/">W</Link>
           </Logo>
           <Menu
+            ref={hamburger}
             onClick={() => {
               setToggleMenu(!toggleMenu)
             }}
+            onMouseEnter={menuHover}
+            onMouseLeave={onCursor}
           >
             <button>
               <span></span>

@@ -8,7 +8,7 @@ export const Nav = styled(motion.div)`
   width: 100%;
   height: 100%;
   display: block;
-  background: ${props => props.theme.red};
+  background: ${(props) => props.theme.red};
   color: #000;
   z-index: 100;
   overflow: hidden;
@@ -17,7 +17,7 @@ export const NavHeader = styled.div`
   top: 72px;
   position: relative;
   h2 {
-    color: ${props => props.theme.background};
+    color: ${(props) => props.theme.background};
   }
 `
 
@@ -32,7 +32,7 @@ export const CloseNav = styled.div`
       width: 36px;
       height: 8px;
       display: block;
-      background: ${props => props.theme.background};
+      background: ${(props) => props.theme.background};
       margin: 8px;
     }
   }
@@ -55,7 +55,7 @@ export const NavList = styled.div`
       line-height: 96px;
       overflow: hidden;
       .link {
-        color: ${props => props.theme.background};
+        color: ${(props) => props.theme.background};
         display: flex;
         align-items: center;
         position: relative;
@@ -65,7 +65,7 @@ export const NavList = styled.div`
           svg {
             width: 100px;
             path {
-              fill: ${props => props.theme.background};
+              fill: ${(props) => props.theme.background};
             }
           }
         }
@@ -74,7 +74,19 @@ export const NavList = styled.div`
   }
 `
 
-export const NavFooter = styled.div``
+export const NavFooter = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 56px 0;
+  p {
+    color: ${(props) => props.theme.background};
+  }
+  svg path {
+    fill: ${(props) => props.theme.background};
+  }
+`
 
 export const NavVideos = styled.div`
   position: absolute;
@@ -87,7 +99,7 @@ export const NavVideos = styled.div`
   background: #000;
   .reveal {
     width: 100%;
-    background: ${props => props.theme.red};
+    background: ${(props) => props.theme.red};
     position: absolute;
     top: 0;
     bottom: 0;
