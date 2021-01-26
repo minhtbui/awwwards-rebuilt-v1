@@ -30,8 +30,8 @@ export const Vimeo = () => (
 )
 
 //Arrow Icon for ref
-{
-  /* <svg
+/* {
+ <svg
 xmlns="http://www.w3.org/2000/svg"
 viewBox="0 0 101 57"
 >
@@ -40,5 +40,5 @@ viewBox="0 0 101 57"
   fill="#FFF"
   fillRule="evenodd"
 ></path>
-</svg> */
-}
+</svg> 
+}*/

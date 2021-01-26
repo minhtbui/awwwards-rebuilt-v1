@@ -51,26 +51,21 @@ const Layout = ({ children }) => {
     x: 0,
     y: 0,
   })
-  const [socialPos, setSocialPos] = useState({
-    x: 0,
-    y: 0,
-  })
 
-  console.log(socialPos)
   const darkTheme = {
     background: "#000",
     text: "#fff",
     red: "#ea291e",
-    left: `${hamburgerPos.x || socialPos.x}px`,
-    top: `${hamburgerPos.y || socialPos.y}px`,
+    left: `${hamburgerPos.x}px`,
+    top: `${hamburgerPos.y}px`,
   }
 
   const ligthTheme = {
     background: "#fff",
     text: "#000",
     red: "#ea291e",
-    left: `${hamburgerPos.x || socialPos.x}px`,
-    top: `${hamburgerPos.y || socialPos.y}px`,
+    left: `${hamburgerPos.x}px`,
+    top: `${hamburgerPos.y}px`,
   }
 
   const { currentTheme, cursorStyles } = useGlobalStateContext()
@@ -104,11 +99,7 @@ const Layout = ({ children }) => {
 
       <main>{children}</main>
 
-      <Footer
-        onCursor={onCursor}
-        setSocialPos={setSocialPos}
-        socialPos={socialPos}
-      />
+      <Footer onCursor={onCursor} />
     </ThemeProvider>
   )
 }

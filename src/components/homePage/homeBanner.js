@@ -22,30 +22,29 @@ const HomeBanner = ({ onCursor }) => {
 
   useEffect(() => {
     let renderingElement = canvas.current
+    // create an offscreen canvas for drawing
     let drawingELement = renderingElement.cloneNode()
-
     let drawingCtx = drawingELement.getContext("2d")
     let renderingCtx = renderingElement.getContext("2d")
-
     let lastX
     let lastY
-
     let moving = false
+
     renderingCtx.globalCompositeOperation = "source-over"
     renderingCtx.fillStyle = currentTheme === "dark" ? "#000" : "#fff"
     renderingCtx.fillRect(0, 0, size.width, size.height)
 
-    renderingElement.addEventListener("mouseover", e => {
+    const _mouseOver = (e) => {
       moving = true
       lastX = e.pageX - renderingElement.offsetLeft
       lastY = e.pageY - renderingElement.offsetTop
-    })
-    renderingElement.addEventListener("mouseup", e => {
+    }
+    const _mouseUp = (e) => {
       moving = false
       lastX = e.pageX - renderingElement.offsetLeft
       lastY = e.pageY - renderingElement.offsetTop
-    })
-    renderingElement.addEventListener("mousemove", e => {
+    }
+    const _mouseMove = (e) => {
       if (moving) {
         drawingCtx.globalCompositeOperation = "source-over"
         renderingCtx.globalCompositeOperation = "destination-out"
@@ -61,7 +60,29 @@ const HomeBanner = ({ onCursor }) => {
         lastY = currentY
         renderingCtx.drawImage(drawingELement, 0, 0)
       }
-    })
+    }
+
+    const _mouseClick = (e) => {
+      moving = true
+      lastX = e.pageX - renderingElement.offsetLeft
+      lastY = e.pageY - renderingElement.offsetTop
+    }
+
+    // Render event listener
+    renderingElement.addEventListener("mouseover", _mouseOver)
+    renderingElement.addEventListener("mouseup", _mouseUp)
+    renderingElement.addEventListener("mousemove", _mouseMove)
+    renderingElement.addEventListener("click", _mouseClick)
+
+    // reset canvas when changing theme
+    return () => {
+      drawingELement = null
+      drawingELement = renderingElement.cloneNode()
+      renderingElement.removeEventListener("mouseover", _mouseOver)
+      renderingElement.removeEventListener("mouseup", _mouseUp)
+      renderingElement.removeEventListener("mousemove", _mouseMove)
+      renderingElement.addEventListener("click", _mouseClick)
+    }
   }, [currentTheme])
 
   const parent = {

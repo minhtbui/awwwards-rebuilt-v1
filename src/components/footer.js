@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 
 // styled component
 import { Container, Flex } from "../styles/globalStyles"
@@ -10,14 +10,7 @@ import { Instagram, Facebook, Vimeo } from "../assets/svg/social-icons"
 //custom hook
 import useElementPosition from "../hooks/useElementPosition"
 
-const Footer = ({ onCursor, setSocialPos }) => {
-  const socialIcon = useRef(null)
-  const position = useElementPosition(socialIcon)
-
-  const socialHover = () => {
-    onCursor("locked")
-    setSocialPos({ x: position.x, y: position.y })
-  }
+const Footer = ({ onCursor }) => {
   return (
     <FooterNav>
       <Container>
@@ -35,7 +28,6 @@ const Footer = ({ onCursor, setSocialPos }) => {
           <FooterSocial>
             <a
               href="/"
-              ref={socialIcon}
               onMouseEnter={() => onCursor("pointer")}
               onMouseLeave={onCursor}
             >
@@ -43,7 +35,6 @@ const Footer = ({ onCursor, setSocialPos }) => {
             </a>
             <a
               href="/"
-              ref={socialIcon}
               onMouseEnter={() => onCursor("pointer")}
               onMouseLeave={onCursor}
             >
@@ -51,7 +42,6 @@ const Footer = ({ onCursor, setSocialPos }) => {
             </a>
             <a
               href="/"
-              ref={socialIcon}
               onMouseEnter={() => onCursor("pointer")}
               onMouseLeave={onCursor}
             >
