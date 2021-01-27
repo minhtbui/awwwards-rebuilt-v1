@@ -47,27 +47,31 @@ const Layout = ({ children }) => {
       }
     }
   `)
-  const [hamburgerPos, setHamburgerPos] = useState({
+
+  // Lock Position
+  const [position, setPosition] = useState({
     x: 0,
     y: 0,
   })
 
+  // Theme Object
   const darkTheme = {
     background: "#000",
     text: "#fff",
     red: "#ea291e",
-    left: `${hamburgerPos.x}px`,
-    top: `${hamburgerPos.y}px`,
+    left: `${position.x}px`,
+    top: `${position.y}px`,
   }
 
   const ligthTheme = {
     background: "#fff",
     text: "#000",
     red: "#ea291e",
-    left: `${hamburgerPos.x}px`,
-    top: `${hamburgerPos.y}px`,
+    left: `${position.x}px`,
+    top: `${position.y}px`,
   }
 
+  // State Hook
   const { currentTheme, cursorStyles } = useGlobalStateContext()
   const dispatch = useGlobalDispatchContext()
   const [toggleMenu, setToggleMenu] = useState(false)
@@ -87,8 +91,7 @@ const Layout = ({ children }) => {
         onCursor={onCursor}
         toggleMenu={toggleMenu}
         setToggleMenu={setToggleMenu}
-        hamburgerPos={hamburgerPos}
-        setHamburgerPos={setHamburgerPos}
+        setPosition={setPosition}
       />
 
       <Nav

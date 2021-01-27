@@ -152,7 +152,9 @@ export const FeaturedProjects = styled.div`
 `
 
 // home about section
-export const HomeAboutSection = styled(motion.div)``
+export const HomeAboutSection = styled(motion.div)`
+  height: 400px;
+`
 
 export const About = styled.div`
   width: 100%;

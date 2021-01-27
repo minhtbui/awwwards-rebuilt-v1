@@ -13,11 +13,11 @@ import {
   useGlobalDispatchContext,
 } from "../context/globalContext"
 
-const IndexPage = props => {
+const IndexPage = (props) => {
   const { cursorStyles } = useGlobalStateContext()
   const dispatch = useGlobalDispatchContext()
 
-  const onCursor = cursorType => {
+  const onCursor = (cursorType) => {
     // set cursorType in Global Context
     cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
     dispatch({ type: "CURSOR_TYPE", cursorType: cursorType })

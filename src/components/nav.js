@@ -104,7 +104,7 @@ const Navigation = ({ toggleMenu, setToggleMenu, onCursor }) => {
                       }}
                       onMouseLeave={onCursor}
                     >
-                      <Link to={`/projects/${route.path}`}>
+                      <Link to={`/projects${route.path}`}>
                         <motion.div
                           className="link"
                           initial={{ x: -108 }}

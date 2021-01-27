@@ -14,17 +14,13 @@ import {
 // custom hook
 import useElementPosition from "../hooks/useElementPosition"
 
-const Header = ({
-  onCursor,
-  toggleMenu,
-  setToggleMenu,
-  hamburgerPos,
-  setHamburgerPos,
-}) => {
+const Header = ({ onCursor, toggleMenu, setToggleMenu, setPosition }) => {
   const dispatch = useGlobalDispatchContext()
   const { currentTheme } = useGlobalStateContext()
   const hamburger = useRef(null)
-  const position = useElementPosition(hamburger)
+  const theme = useRef(null)
+  const hamburgerPos = useElementPosition(hamburger)
+  const themePos = useElementPosition(theme)
 
   const toggleTheme = () => {
     currentTheme === "dark"
@@ -32,11 +28,20 @@ const Header = ({
       : dispatch({ type: "TOGGLE_THEME", theme: "dark" })
   }
 
-  const menuHover = () => {
+  const menuLock = () => {
     onCursor("locked")
-    setHamburgerPos({ x: position.x, y: position.y + 72 })
+    setPosition({
+      x: hamburgerPos.x,
+      y: hamburgerPos.y + 72,
+    })
   }
-
+  const themeLock = () => {
+    onCursor("locked")
+    setPosition({
+      x: themePos.x,
+      y: themePos.y + 72,
+    })
+  }
   useEffect(() => {
     window.localStorage.setItem("theme", currentTheme)
   }, [currentTheme])
@@ -55,8 +60,9 @@ const Header = ({
           >
             <Link to="/">FURR</Link>
             <span
+              ref={theme}
               onClick={toggleTheme}
-              onMouseEnter={() => onCursor("pointer")}
+              onMouseEnter={themeLock}
               onMouseLeave={() => onCursor("hovered")}
             ></span>
             <Link to="/">W</Link>
@@ -66,7 +72,7 @@ const Header = ({
             onClick={() => {
               setToggleMenu(!toggleMenu)
             }}
-            onMouseEnter={menuHover}
+            onMouseEnter={menuLock}
             onMouseLeave={onCursor}
           >
             <button>
