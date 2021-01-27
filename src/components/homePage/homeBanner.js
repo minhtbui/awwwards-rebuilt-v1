@@ -86,25 +86,35 @@ const HomeBanner = ({ onCursor }) => {
   }, [currentTheme])
 
   const parent = {
-    initial: { y: 800 },
     animate: {
-      y: 0,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.5,
       },
     },
   }
   const child = {
-    initial: { y: 800 },
+    initial: { x: "100vw" },
+    animate: {
+      x: 0,
+      transition: {
+        duration: 1.5,
+        ease: [0.6, 0.05, -0.01, 0.9],
+        type: "spring",
+      },
+    },
+  }
+
+  const child2 = {
+    initial: { y: 500 },
     animate: {
       y: 0,
       transition: {
         duration: 1,
         ease: [0.6, 0.05, -0.01, 0.9],
+        type: "spring",
       },
     },
   }
-
   return (
     <Banner>
       <Video>
@@ -126,7 +136,7 @@ const HomeBanner = ({ onCursor }) => {
       />
       <BannerTitle initial="initial" animate="animate" variants={parent}>
         <HeadLine variants={child}>DIG</HeadLine>
-        <HeadLine variants={child}>DEEP</HeadLine>
+        <HeadLine variants={child2}>DEEP</HeadLine>
       </BannerTitle>
     </Banner>
   )
